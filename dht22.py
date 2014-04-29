@@ -14,7 +14,7 @@ retry_count = 0
 # Run the DHT program to get the humidity and temperature readings
 while (sensor_status == "empty") :
 	print "Get sensor reading..."
-	output = subprocess.check_output(["/devroot/Adafruit-Raspberry-Pi-Python-Code/Adafruit_DHT_Driver/Adafruit_DHT", "22", "23"]);
+	output = subprocess.check_output(["lib/Adafruit_DHT", "22", "23"]);
 	print output
 	matches = re.search("Temp =\s+([0-9.]+)", output)
 	if (not matches):

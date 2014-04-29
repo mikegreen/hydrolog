@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      hydrolog example
+    </title>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1.1', {packages: ['corechart', 'gauge']});
+
+	var d = new Date();
+	var currentDay = d.getDate();
+	var currentMonth = d.getMonth();
+	var currentYear = d.getFullYear();
+	
+	var dPrior = new Date(d.getTime() - 1*24*60*60*1000);
+	var priorDay = dPrior.getDate();
+	var priorMonth = dPrior.getMonth();
+	var priorYear = dPrior.getFullYear();
+   
+      function drawVisualization() {
+      
+	var gaugeOptions = {
+		// width: 350,
+		height: 150
+		}
+      
+	function refreshData() {
+		var currentjsonData = $.ajax({
+		  url: "current_json.php",
+		  dataType:"json",
+		  async: false
+		  }).responseText;		
+	
+		var currentData = new google.visualization.DataTable(currentjsonData);
+		
+		gauges.draw(currentData, gaugeOptions);	
+		}	
+      
+	var jsonData = $.ajax({
+          url: "history_json.php",
+          dataType:"text",
+          async: false
+          }).responseText;
+	  
+	var gauges = new google.visualization.Gauge(document.getElementById('gauge_div'));
+
+	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+	var chartOptions = {
+		curveType: 'function',
+		colors:['red','#1c91c0','blue'] ,
+		// hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+		vAxis: {viewWindow:{min: 35, max: 80}}
+		};
+
+         var chartData = new google.visualization.DataTable(jsonData);
+	 chartData.removeColumn(0);
+	 //chartData.addColumn('datetime', 'Date');
+	
+	var formatter = new google.visualization.DateFormat({pattern: 'yyyy/MM/dd H:mm'});
+	formatter.format(chartData, 0);
+
+	
+         chart.draw(chartData, chartOptions);
+	 refreshData();
+	 setInterval(refreshData, 1000*60);
+      }
+      
+      google.setOnLoadCallback(drawVisualization);
+      
+    </script>
+  </head>
+  <body>
+    <div id="dashboard" style='width: 100%; height: 100%;'></div>
+	Latest readings:
+	<div id="gauge_div" ></div>
+	<div id="chart_div" style='width: 100%; height: 500px'></div>
+    </div>
+  </body>
+</html>
