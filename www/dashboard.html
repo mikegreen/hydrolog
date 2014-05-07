@@ -5,7 +5,12 @@
     <title>
       hydrolog example
     </title>
-    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
       google.load('visualization', '1.1', {packages: ['corechart', 'gauge']});
@@ -26,7 +31,32 @@
 		// width: 350,
 		height: 150
 		}
-      
+     
+	var currentWaterData = JSON.parse(
+		$.ajax({
+		  url: "current_water_level.php",
+		  dataType:"json",
+		  async: false
+		  }).responseText
+		  );
+
+		// alert(currentWaterData[0].reading_ts);
+		// alert(currentWaterData[0].sensor_value);
+
+	latestWaterReading = (currentWaterData[0].reading_ts);
+	if (currentWaterData[0].sensor_value == 0) {
+		waterLevel = "Above minimum";
+		document.getElementById("waterLevel").className = "alert alert-success";
+		}
+		else {
+		waterLevel = "Below Minimum" ;
+		document.getElementById("waterLevel").className = "alert alert-danger";
+		}
+		// alert(waterLevel);
+		document.getElementById('waterLevelText').innerHTML = waterLevel;	
+		document.getElementById('waterLevelLast').innerHTML = latestWaterReading;
+		
+
 	function refreshData() {
 		var currentjsonData = $.ajax({
 		  url: "current_json.php",
@@ -74,10 +104,53 @@
     </script>
   </head>
   <body>
-    <div id="dashboard" style='width: 100%; height: 100%;'></div>
+  
+  <hr><hr>
+  
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">	</a>
+        </div><!-- /navbar-header -->
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+	<li class="active"><a href="#">Sensors</a></li>
+          <li ><a href="#future">Future</a></li>
+          <li><a href="#future">Todo</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+     </div><!-- /navbar-top--> 
+  
+  <table class="table ">
+<tr>
+<td width=50%>
 	Latest readings:
 	<div id="gauge_div" ></div>
+</td>
+<td width=50%>
+
+		<div id="waterLevel" class="alert alert-warning">
+		<strong>Water level: </strong> <span id="waterLevelText">unknown</span>
+		<br>
+		<strong>Last read: </strong> <span id="waterLevelLast">unknown</span>
+		</div>
+
+</td>
+</tr>
+<tr>
+<td colspan=2>
+	Historical readings:
 	<div id="chart_div" style='width: 100%; height: 500px'></div>
-    </div>
+</td>
+</tr>
+</table>
+
+    
   </body>
 </html>
