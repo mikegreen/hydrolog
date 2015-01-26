@@ -1,0 +1,6 @@
+# to install papertrail on dreamhost
+gem install remote_syslog
+gem install eventmachine-le
+gem install eventmachine
+
+/home/YOUR-ACCOUNT-HERE/.gems/gems/remote_syslog-1.6.14/bin/remote_syslog -d logs2.papertrailapp.com -p 22863 -c /home/oakwoodproduce/papertrail_logging/log_files.yml --pid-file /home/oakwoodproduce/papertrail_logging/remote_syslog.pid --tls

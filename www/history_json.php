@@ -2,7 +2,7 @@
 
 // set up header; first two prevent IE from caching queries
 header('Cache-Control: no-cache, must-revalidate');
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Expires: Mon, 26 Jul 1999 05:00:00 GMT');
 header('Content-type: application/json');
 
 include ( "../hl_config/config.php");
