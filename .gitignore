@@ -4,3 +4,4 @@ test1.ex.py
 test2.ex.py
 dht11.py
 air_temp_humid.py
+*.pyc
