@@ -6,6 +6,8 @@ import sys
 import time
 import datetime
 
+print "Starting updateHydrolog.py @",time.strftime("%Y-%m-%d %H:%M:%S"),"GMT"
+
 import dbCreds
 import dht22
 import ds18b20

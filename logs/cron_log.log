@@ -1,0 +1,24 @@
+Starting updateHydrolog.py @ 2015-01-26 03:51:01 GMT
+DHT22 start
+Get sensor reading...
+Using pin #23
+Data (40): 0x2 0x16 0x0 0xd3 0xeb
+Temp =  21.1 *C, Hum = 53.4 %
+
+Temperature: 69.980000 F
+Humidity:    53.4 %
+DHT22 finish
+ds18b20 start
+base dir: /sys/bus/w1/devices/
+does exist?  True
+does device_folder exist?  False
+therm not found
+nothing to do, sensor not found
+ds18b20 finish
+water sensor start
+1
+water sensor finish
+INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','temp_air','69.98','pi')
+INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','humidity','53.4','pi')
+INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','temp_water','0.0','pi')
+INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','water_level','1','pi')
