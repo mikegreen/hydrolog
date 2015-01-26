@@ -1,6 +1,7 @@
 import os
 import glob
 import time
+import sys
 
 print "ds18b20 start"
 
@@ -8,8 +9,21 @@ print "ds18b20 start"
 # os.system('modprobe w1-gpio')
 # os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0]
-device_file = device_folder + '/w1_slave'
+
+print "base dir:",base_dir
+print "does exist? ", os.path.isdir(base_dir)
+
+print "does device_folder exist? ",os.path.isdir(base_dir + '28*')
+
+if os.path.isdir(base_dir + '28*'):
+	device_folder = glob.glob(base_dir + '28*')[0]
+	device_file = device_folder + '/w1_slave'
+	print "therm found: ",device_folder
+	print "             ",device_file
+	sensor_present = True
+else:
+	sensor_present = False
+	print "therm not found"
 
 tempC = 0.00
 tempF = 0.00
@@ -33,11 +47,10 @@ def read_temp():
         tempF = round(tempC * 9.0 / 5.0 + 32.0,2)
         return tempC, tempF
 
-print('ds18b20 temperature:')
-print(read_temp())
-	
-#while True:
-#	print(read_temp())	
-#	time.sleep(1)
+if sensor_present:
+	print('ds18b20 temperature:')
+	print(read_temp())
+else:
+	print "nothing to do, sensor not found"
 
 print "ds18b20 finish"
