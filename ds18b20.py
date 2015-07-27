@@ -5,6 +5,9 @@ import sys
 
 print "ds18b20 start"
 
+# for rpi - need below line in config.txt
+# dtoverlay=w1-gpio
+
 # loading these in /etc/modules now
 # os.system('modprobe w1-gpio')
 # os.system('modprobe w1-therm')
