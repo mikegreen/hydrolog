@@ -5,21 +5,27 @@ import sys
 
 print "ds18b20 start"
 
+# for rpi - need below line in config.txt
+# dtoverlay=w1-gpio
+
 # loading these in /etc/modules now
 # os.system('modprobe w1-gpio')
 # os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
+probe_dir = '28-0000068a9c8a'
 
-print "base dir:",base_dir
-print "does exist? ", os.path.isdir(base_dir)
+print "base_dir:",base_dir
+print "does base_dir exist? ", os.path.isdir(base_dir)
 
-print "does device_folder exist? ",os.path.isdir(base_dir + '28*')
+probe_dir_full = os.path.join(base_dir,probe_dir)
+print "device_folder: " + probe_dir_full
 
-if os.path.isdir(base_dir + '28*'):
-	device_folder = glob.glob(base_dir + '28*')[0]
-	device_file = device_folder + '/w1_slave'
-	print "therm found: ",device_folder
-	print "             ",device_file
+print "does device_folder exist? ",os.path.isdir(probe_dir_full)
+
+if os.path.isdir(probe_dir_full):
+	#device_folder = glob.glob(probe_dir_full)[0]
+	device_file = probe_dir_full + '/w1_slave'
+	print "therm found: ", probe_dir_full
 	sensor_present = True
 else:
 	sensor_present = False
@@ -54,3 +60,4 @@ else:
 	print "nothing to do, sensor not found"
 
 print "ds18b20 finish"
+
