@@ -20,9 +20,9 @@ import dht22
 import ds18b20
 #import gpioWaterLevel
 
-py.sign_in('mikegreen', 's6i21ksh5c')
-tokenPH = "26sz099jj4"
-tokenPHRaw = "i3ryt7cn93"
+py.sign_in('username', 'password')
+tokenPH = "xxxxx"
+tokenPHRaw = "xxxxx"
 
 address = 0x4d
 bus = smbus.SMBus(1) 
