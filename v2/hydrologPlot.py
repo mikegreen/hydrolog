@@ -21,14 +21,15 @@ import ds18b20
 #import gpioWaterLevel
 
 # plot.ly settings, tokens created https://plot.ly/settings/api
-
 import hydrologConfig
 
-py.sign_in(hydrologConfig.plotly['username'], hydrologConfig.plotly['password'],
-tokenPH         = hydrologConfig.plotly['tokenPH']
-tokenTempWater  = hydrologConfig.plotly['tokenTempWater']
-tokenTempAir    = hydrologConfig.plotly['tokenTempAir']
-tokenHumidity   = hydrologConfig.plotly['tokenHumidity']
+print hydrologConfig.plotly['username']
+
+py.sign_in(hydrologConfig.plotly['username'], hydrologConfig.plotly['password'])
+tokenPH 	= hydrologConfig.plotly['tokenPH']
+tokenTempWater	= hydrologConfig.plotly['tokenTempWater']
+tokenTempAir	= hydrologConfig.plotly['tokenTempAir']
+tokenHumidity	= hydrologConfig.plotly['tokenHumidity']
 
 address		= 0x4d
 bus		= smbus.SMBus(1) 
@@ -93,6 +94,7 @@ layout = Layout(
 	)
 
 fig = Figure(data=data, layout=layout)
+# this below creates the plot, and will overwrite if rerun. commented out for cron
 # unique_url = py.plot(fig, filename = 'hydrolog testing 4')
 
 streamPH = py.Stream(tokenPH)
@@ -107,9 +109,7 @@ streamTempAir.open()
 streamHumidity = py.Stream(tokenHumidity)
 streamHumidity.open()
 
-print "Start while looping"
-
-while (1 == 1):
+def logPlot():
 # water temp reading
 	tempWater = ds18b20.readSensor()
 
@@ -133,9 +133,5 @@ while (1 == 1):
 	streamTempAir.write(dict(x=x,y=tempAir))
 	streamHumidity.write(dict(x=x,y=humidity))
 
-	time.sleep(2)
-
-
-
-
+logPlot()
 
