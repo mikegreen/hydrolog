@@ -1,24 +1,218 @@
-Starting updateHydrolog.py @ 2015-01-26 03:51:01 GMT
 DHT22 start
-Get sensor reading...
-Using pin #23
-Data (40): 0x2 0x16 0x0 0xd3 0xeb
-Temp =  21.1 *C, Hum = 53.4 %
-
-Temperature: 69.980000 F
-Humidity:    53.4 %
-DHT22 finish
 ds18b20 start
-base dir: /sys/bus/w1/devices/
-does exist?  True
-does device_folder exist?  False
-therm not found
-nothing to do, sensor not found
+base_dir: /sys/bus/w1/devices/
+does base_dir exist?  True
+device_folder: /sys/bus/w1/devices/28-0000068a9c8a
+does device_folder exist?  True
+therm found:  /sys/bus/w1/devices/28-0000068a9c8a
+ds18b20 temperature:
+(24.0, 75.2)
 ds18b20 finish
-water sensor start
-1
-water sensor finish
-INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','temp_air','69.98','pi')
-INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','humidity','53.4','pi')
-INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','temp_water','0.0','pi')
-INSERT INTO sensor_readings(reading_ts, sensor_location, sensor_type, sensor_value, create_user)VALUES('2015-01-26 03:51:03','bato','water_level','1','pi')
+start
+Start while looping
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.29
+ water temp: 75.2
+Temperature: 77.36
+   Humidity: 58.00
+         ph: 6.27
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.36
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.36
+   Humidity: 58.00
+         ph: 6.34
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.29
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.27
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.36
+   Humidity: 58.00
+         ph: 6.34
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.37
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.28
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.33
+ water temp: 75.09
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.34
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.36
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.40
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 57.90
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.33
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.50
+         ph: 6.32
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.31
+ water temp: 75.2
+Temperature: 77.18
+   Humidity: 58.00
+         ph: 6.3
+ water temp: 75.2
+Temperature: 77.36

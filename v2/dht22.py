@@ -33,6 +33,6 @@ def readSensor():
 	# tempF = "{0:0.2f}".format(tempF)
 	humidity = "{0:0.2f}".format(humidity)
 	print "   Humidity: " + str(humidity)
-#	return tempF
+	return (tempF, humidity)
 	
 # print "DHT22 finish"

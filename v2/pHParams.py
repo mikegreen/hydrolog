@@ -65,7 +65,7 @@ class pHParams(object):
             return -1
 
 
-    def read_calibs(self, calibs_file="ph.json"):
+    def read_calibs(self, calibs_file="/devroot/hydrolog/v2/ph.json"):
         """Reads calibrations from file.
 
         :param calibs_file: The file to read params from

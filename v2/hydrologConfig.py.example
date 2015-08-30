@@ -1,0 +1,13 @@
+# hydrolog config file 
+# tokens created https://plot.ly/settings/api
+
+plotly = dict(
+	username	= "",
+	password	= "",
+	tokenPH         = "", 
+	# tokenPHRaw      = "",
+	tokenTempWater  = "",
+	tokenTempAir    = "",
+	tokenHumidity   = ""
+	)
+
